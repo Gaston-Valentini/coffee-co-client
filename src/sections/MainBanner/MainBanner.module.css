@@ -1,0 +1,99 @@
+.container {
+    height: calc(100vh - 50px);
+    padding-top: 50px;
+    background-image: url("../../assets/images/mainBanner.jpg");
+    background-size: cover;
+}
+
+.overlay {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.content {
+    margin-right: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 10;
+}
+
+.contentLogo {
+    height: 200px;
+}
+
+.contentLogo img {
+    height: 100%;
+    width: 100%;
+}
+
+.contentTitle {
+    font-size: 70px;
+    font-family: var(--serif);
+    line-height: 1;
+    text-align: center;
+    color: white;
+}
+
+.contentDivisor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contentDivisor span {
+    height: 0px;
+    width: 50px;
+    border: 1px solid var(--brown);
+}
+
+.contentDivisor svg {
+    font-size: 30px;
+    color: white;
+}
+
+.contentText {
+    max-width: 500px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 13px;
+    color: white;
+}
+
+.contentReserve {
+    margin-top: 20px;
+    padding: 15px 35px;
+    font-size: 13px;
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+}
+
+.contentReserve:hover {
+    color: black;
+    background-color: white;
+    transition: 0;
+}
+
+@media (max-width: 991px) {
+    .container {
+        background-position: right;
+    }
+    .overlay {
+        padding: 0 20px;
+        justify-content: center;
+    }
+    .content {
+        margin-right: 0;
+    }
+    .contentLogo {
+        height: 150px;
+    }
+    .contentTitle {
+        font-size: 50px;
+    }
+}

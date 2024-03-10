@@ -1,0 +1,82 @@
+.container {
+    position: fixed;
+    width: calc(100% - 40px);
+    height: 50px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 0 1px black;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    font-family: var(--serif);
+    color: var(--brown);
+}
+
+.links {
+    display: flex;
+    gap: 20px;
+}
+
+.linksLink {
+    text-decoration: none;
+    color: var(--brown);
+}
+
+.linksLink:hover {
+    text-decoration: underline;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profileBars {
+    font-size: 30px;
+    color: var(--brown);
+    display: none;
+}
+
+.profileBars:hover {
+    cursor: pointer;
+}
+
+.profileLogin {
+    text-decoration: none;
+    color: var(--brown);
+}
+
+.profileLogin:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 991px) {
+    .profileBars {
+        display: block;
+    }
+    .links {
+        position: absolute;
+        padding: 20px 0;
+        flex-direction: column;
+        align-items: center;
+        top: 50px;
+        left: 100%;
+        width: 100%;
+        height: calc(100vh - 50px);
+        background-color: var(--brown);
+        transition: 0.3s ease-in;
+    }
+    .linksLink {
+        color: white;
+    }
+    .linksActive {
+        left: 0;
+    }
+}

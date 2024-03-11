@@ -24,6 +24,7 @@
 }
 
 .linksLink {
+    font-size: 16px;
     text-decoration: none;
     color: var(--brown);
 }
@@ -49,6 +50,7 @@
 }
 
 .profileLogin {
+    font-size: 16px;
     text-decoration: none;
     color: var(--brown);
 }

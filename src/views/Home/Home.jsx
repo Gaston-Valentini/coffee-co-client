@@ -2,6 +2,7 @@ import style from "./Home.module.css";
 import MainBanner from "../../sections/MainBanner/MainBanner";
 import OurOffer from "../../sections/OurOffer/OurOffer";
 import CoffeeHerald from "../../sections/CoffeeHerald/CoffeeHerald";
+import BannerHome from "../../sections/BannerHome/BannerHome";
 
 export default function Home() {
     return (
@@ -9,6 +10,7 @@ export default function Home() {
             <MainBanner />
             <OurOffer />
             <CoffeeHerald />
+            <BannerHome />
         </section>
     );
 }

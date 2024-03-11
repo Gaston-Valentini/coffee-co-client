@@ -73,9 +73,9 @@
 }
 
 .contentReserve:hover {
-    color: black;
-    background-color: white;
-    transition: 0;
+    background-color: var(--brown);
+    border: 1px solid var(--brown);
+    transition: 0.3s;
 }
 
 @media (max-width: 991px) {

@@ -1,0 +1,53 @@
+.container {
+    width: calc(100%);
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.title {
+    padding: 0 20px;
+    font-size: 40px;
+    font-family: var(--serif);
+    text-align: center;
+}
+
+.divisor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.divisor span {
+    height: 0;
+    width: 35px;
+    border: 1px solid var(--brown);
+}
+
+.divisor svg {
+    font-size: 20px;
+    color: var(--brown);
+}
+
+.text {
+    max-width: 700px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.gallery {
+    width: 100%;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 991px) {
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+}

@@ -2,8 +2,9 @@ import style from "./Home.module.css";
 import MainBanner from "../../sections/MainBanner/MainBanner";
 import OurOffer from "../../sections/OurOffer/OurOffer";
 import CoffeeHerald from "../../sections/CoffeeHerald/CoffeeHerald";
-import BannerHome from "../../sections/BannerHome/BannerHome";
 import Numbers from "../../sections/Numbers/Numbers";
+import BannerHome from "../../sections/BannerHome/BannerHome";
+import Gallery from "../../sections/Gallery/Gallery";
 
 export default function Home() {
     return (
@@ -11,8 +12,9 @@ export default function Home() {
             <MainBanner />
             <OurOffer />
             <CoffeeHerald />
-            <BannerHome />
             <Numbers />
+            <BannerHome />
+            <Gallery />
         </section>
     );
 }

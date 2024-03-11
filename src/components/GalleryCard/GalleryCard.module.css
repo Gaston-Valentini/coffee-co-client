@@ -1,0 +1,32 @@
+.container {
+    position: relative;
+    display: flex;
+}
+
+.image img {
+    height: 100%;
+    width: 100%;
+}
+
+.overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+}
+
+.overlay:hover {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.overlayText {
+    font-size: 30px;
+    font-family: var(--serif);
+    text-align: center;
+    color: white;
+}

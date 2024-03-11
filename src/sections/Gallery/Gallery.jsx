@@ -8,6 +8,12 @@ import image_5 from "../../assets/images/galleryImage_5.jpg";
 import image_6 from "../../assets/images/galleryImage_6.jpg";
 import image_7 from "../../assets/images/galleryImage_7.jpg";
 import image_8 from "../../assets/images/galleryImage_8.jpg";
+import image_9 from "../../assets/images/sponsors_1.png";
+import image_10 from "../../assets/images/sponsors_2.png";
+import image_11 from "../../assets/images/sponsors_3.png";
+import image_12 from "../../assets/images/sponsors_4.png";
+import image_13 from "../../assets/images/sponsors_5.png";
+import image_14 from "../../assets/images/sponsors_6.png";
 import GalleryCard from "../../components/GalleryCard/GalleryCard";
 import { useState } from "react";
 
@@ -36,6 +42,26 @@ export default function Gallery() {
                 {gallery.map((e) => (
                     <GalleryCard key={e.id} bg={e.image} text={e.text} />
                 ))}
+            </div>
+            <div className={style.sponsors}>
+                <div className={style.sponsorsImage}>
+                    <img src={image_9} />
+                </div>
+                <div className={style.sponsorsImage}>
+                    <img src={image_10} />
+                </div>
+                <div className={style.sponsorsImage}>
+                    <img src={image_11} />
+                </div>
+                <div className={style.sponsorsImage}>
+                    <img src={image_12} />
+                </div>
+                <div className={style.sponsorsImage}>
+                    <img src={image_13} />
+                </div>
+                <div className={style.sponsorsImage}>
+                    <img src={image_14} />
+                </div>
             </div>
         </section>
     );

@@ -45,9 +45,29 @@
     gap: 20px;
 }
 
+.sponsors {
+    margin-top: 100px;
+    display: flex;
+}
+
+.sponsorsImage {
+    width: 100%;
+    height: 100%;
+}
+
+.sponsorsImage img {
+    height: 100%;
+    width: 100%;
+}
+
 @media (max-width: 991px) {
     .gallery {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
+    }
+    .sponsors {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 20px;
     }
 }

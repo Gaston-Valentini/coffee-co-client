@@ -7,13 +7,13 @@ import image_3 from "../../assets/images/herald_3.jpg";
 export default function CoffeeHerald() {
     return (
         <section className={style.container}>
-            <div className={style.title}>OUR DELICIOUS OFFER</div>
+            <div className={style.title}>THE COFFE HERALD</div>
             <div className={style.divisor}>
                 <span />
                 <GiCoffeeBeans />
                 <span />
             </div>
-            <div className={style.text}>Welcome to Coffee Herald! Explore the magic of coffee with innovative methods, from the elegance of the French Press to the exotic flavors of the Turkish Ibrik. Ready to dive into the art of coffee?</div>
+            <div className={style.text}>Explore the magic of coffee with innovative methods, from the elegance of the French Press to the exotic flavors of the Turkish Ibrik. Ready to dive into the art of coffee?</div>
             <div className={style.cards}>
                 <div className={style.cardsCard}>
                     <div className={style.cardsCardImage}>

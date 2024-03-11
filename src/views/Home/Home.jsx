@@ -3,6 +3,7 @@ import MainBanner from "../../sections/MainBanner/MainBanner";
 import OurOffer from "../../sections/OurOffer/OurOffer";
 import CoffeeHerald from "../../sections/CoffeeHerald/CoffeeHerald";
 import BannerHome from "../../sections/BannerHome/BannerHome";
+import Numbers from "../../sections/Numbers/Numbers";
 
 export default function Home() {
     return (
@@ -11,6 +12,7 @@ export default function Home() {
             <OurOffer />
             <CoffeeHerald />
             <BannerHome />
+            <Numbers />
         </section>
     );
 }

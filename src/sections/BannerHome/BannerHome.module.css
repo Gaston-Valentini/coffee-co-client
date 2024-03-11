@@ -1,12 +1,18 @@
 .container {
-    width: calc(100% - 200px);
-    padding: 100px;
-    display: flex;
-    justify-content: center;
+    width: 100%;
     background-image: url("../../assets/images/bannerBg.jpg");
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+}
+
+.overlay {
+    width: calc(100% - 200px);
+    height: 100%;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .logo {
@@ -19,10 +25,13 @@
 }
 
 @media (max-width: 991px) {
-    .container {
+    .overlay {
         width: calc(100% - 100px);
         padding: 50px;
     }
+}
+
+@media (max-width: 500px) {
     .logo {
         height: auto;
     }

@@ -1,0 +1,30 @@
+.container {
+    background-image: url("../../assets/images/menuBg.jpg");
+    background-size: cover;
+    background-position: bottom;
+}
+
+.overlay {
+    height: 100%;
+    padding: 200px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlayText {
+    font-size: 70px;
+    font-family: var(--serif);
+    color: white;
+}
+
+@media (max-width: 470px) {
+    .overlay {
+        padding: 50px 20px;
+    }
+
+    .overlayText {
+        font-size: 50px;
+    }
+}

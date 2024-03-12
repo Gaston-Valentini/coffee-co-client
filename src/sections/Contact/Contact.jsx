@@ -13,7 +13,7 @@ export default function Contact() {
                 <span />
             </div>
             <div className={style.text}>We'd love to hear from you! Whether you have questions, comments, or just want to say hello, feel free to get in touch with us. We're here to assist you.</div>
-            <form className={style.contact}>
+            <div className={style.contact}>
                 <div className={style.contactData}>
                     <div className={style.contactDataTitle}>GET IN TOUCH</div>
                     <div className={style.contactDataText}>We'd love to hear from you! Whether you have questions, comments, or just want to say hello, feel free to get in touch with us. We're here to assist you.</div>
@@ -38,14 +38,14 @@ export default function Contact() {
                         </div>
                     </div>
                 </div>
-                <form className={style.form}>
+                <form className={style.form} onSubmit={(e) => e.preventDefault()}>
                     <input type="text" placeholder="Your Name" className={style.formName} />
                     <input type="email" placeholder="Your Email" className={style.formEmail} />
                     <input type="text" placeholder="Subject" className={style.formSubject} />
                     <textarea placeholder="Messagge here..." className={style.formMessage} />
                     <input type="submit" value="SEND MESSAGE" className={style.formSubmit} />
                 </form>
-            </form>
+            </div>
         </section>
     );
 }

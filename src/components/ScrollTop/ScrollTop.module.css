@@ -1,0 +1,19 @@
+.container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px;
+    background-color: var(--brown);
+    box-shadow: 0 0 5px black;
+    border-radius: 50%;
+}
+
+.container:hover {
+    cursor: pointer;
+    background-color: var(--black);
+    color: white;
+}
+
+.container svg {
+    font-size: 25px;
+}

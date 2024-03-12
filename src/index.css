@@ -5,3 +5,16 @@
     --black: #262626;
     --grey: #989898;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--brown);
+    border-top: 50px solid white;
+}
+
+::-webkit-scrollbar-track {
+    background-color: white;
+}

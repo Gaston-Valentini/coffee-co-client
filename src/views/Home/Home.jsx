@@ -6,6 +6,7 @@ import Numbers from "../../sections/Numbers/Numbers";
 import BannerHome from "../../sections/BannerHome/BannerHome";
 import Gallery from "../../sections/Gallery/Gallery";
 import Contact from "../../sections/Contact/Contact";
+import ScrollTop from "../../components/ScrollTop/ScrollTop";
 
 export default function Home() {
     return (
@@ -17,6 +18,7 @@ export default function Home() {
             <BannerHome />
             <Gallery />
             <Contact />
+            <ScrollTop />
         </section>
     );
 }

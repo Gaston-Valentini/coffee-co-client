@@ -3,3 +3,7 @@
     font-family: var(--sans);
     font-size: 13px;
 }
+
+div {
+    color: var(--black);
+}

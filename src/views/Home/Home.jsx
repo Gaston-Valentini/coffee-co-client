@@ -5,6 +5,7 @@ import CoffeeHerald from "../../sections/CoffeeHerald/CoffeeHerald";
 import Numbers from "../../sections/Numbers/Numbers";
 import BannerHome from "../../sections/BannerHome/BannerHome";
 import Gallery from "../../sections/Gallery/Gallery";
+import Contact from "../../sections/Contact/Contact";
 
 export default function Home() {
     return (
@@ -15,6 +16,7 @@ export default function Home() {
             <Numbers />
             <BannerHome />
             <Gallery />
+            <Contact />
         </section>
     );
 }

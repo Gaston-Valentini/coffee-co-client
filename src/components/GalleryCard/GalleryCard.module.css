@@ -30,3 +30,9 @@
     text-align: center;
     color: white;
 }
+
+@media (max-width: 470px) {
+    .overlayText {
+        font-size: 20px;
+    }
+}

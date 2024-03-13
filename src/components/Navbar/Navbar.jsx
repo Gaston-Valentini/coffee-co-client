@@ -15,10 +15,10 @@ export default function Navbar() {
         <nav className={style.container}>
             <div className={style.logo}>Coffee & Co</div>
             <div className={`${style.links} ${isLinksActive ? style.linksActive : ""}`} ref={links}>
-                <Link to="#" className={style.linksLink} onClick={onBars}>
+                <Link to="/" className={style.linksLink} onClick={onBars}>
                     Home
                 </Link>
-                <Link to="#" className={style.linksLink} onClick={onBars}>
+                <Link to="/menu" className={style.linksLink} onClick={onBars}>
                     Menu
                 </Link>
                 <Link to="#" className={style.linksLink} onClick={onBars}>

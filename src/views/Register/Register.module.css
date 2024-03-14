@@ -87,6 +87,11 @@
     color: #2fe98c;
 }
 
+.formDataFieldsField {
+    display: flex;
+    flex-direction: column;
+}
+
 .formDataFieldsField input {
     width: calc(100% - 32px);
     padding: 15px;
@@ -103,6 +108,7 @@
 }
 
 .formDataFieldsFieldError {
+    align-self: flex-end;
     font-size: 10px;
     color: red;
 }

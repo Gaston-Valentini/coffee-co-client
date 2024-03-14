@@ -8,4 +8,12 @@ const register = async (body) => {
     }
 };
 
-export { register };
+const login = async (body) => {
+    try {
+        return await axios.post("http://localhost:4000/auth/login", body);
+    } catch (error) {
+        return error;
+    }
+};
+
+export { register, login };

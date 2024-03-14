@@ -71,7 +71,7 @@
     max-width: 500px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 35px;
 }
 
 .formDataFields {
@@ -80,14 +80,37 @@
     gap: 10px;
 }
 
-.formDataFields input {
-    padding: 10px;
+.formDataFieldsMessage {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #2fe98c;
+}
+
+.formDataFieldsField {
+    display: flex;
+    flex-direction: column;
+}
+
+.formDataFieldsField input {
+    width: calc(100% - 32px);
+    padding: 15px;
     border: 1px solid var(--grey);
 }
 
-.formDataFields input:focus {
+.formDataFieldsField input:focus {
     outline: none;
     border: 1px solid var(--brown);
+}
+
+.error input {
+    border: 1px solid red;
+}
+
+.formDataFieldsFieldError {
+    align-self: flex-end;
+    font-size: 10px;
+    color: red;
 }
 
 .formDataAuth {
@@ -134,5 +157,13 @@
     }
     .formTitlesTitle {
         font-size: 40px;
+    }
+    .formDataFieldsField input {
+        width: calc(100% - 22px);
+        padding: 10px;
+    }
+    .formDataAuthSubmit {
+        width: 150px;
+        padding: 12px;
     }
 }

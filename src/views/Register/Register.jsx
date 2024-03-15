@@ -47,7 +47,7 @@ export default function Register() {
         return "";
     };
 
-    // Función que actualiza el del estado de usuario.
+    // Función que actualiza el estado del usuario.
     const handleInput = (e) => {
         // Actualiza el estado de usuario con el atributo name y el valor del elemento que ejecuta el evento.
         const { name, value } = e.target;

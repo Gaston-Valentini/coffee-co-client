@@ -1,6 +1,6 @@
 import style from "./Navbar.module.css";
 import { LiaBarsSolid } from "react-icons/lia";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { getUser } from "../../apiCalls/apiCalls.js";
 
@@ -26,6 +26,7 @@ export default function Navbar() {
     const getUserData = async () => {
         const res = await getUser(token);
         setUser(res.data.user);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
     };
 
     useEffect(() => {

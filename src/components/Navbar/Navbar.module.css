@@ -49,12 +49,14 @@
     cursor: pointer;
 }
 
+.profileName,
 .profileLogin {
     font-size: 16px;
     text-decoration: none;
     color: var(--brown);
 }
 
+.profileName:hover,
 .profileLogin:hover {
     text-decoration: underline;
 }

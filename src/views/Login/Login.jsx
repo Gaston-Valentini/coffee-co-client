@@ -56,13 +56,13 @@ export default function Login() {
                     break;
             }
         } else {
-            // Si no hay errror actualiza el mensaje general del formulario para que el usuario sepa que todo fué bien
+            // Si no hay error actualiza el mensaje general del formulario para que el usuario sepa que todo fué bien
             setMessage(res.data.message);
 
             // Luego de 2 segundos almacena el token del usuario y navega a la vista home
             setTimeout(() => {
                 localStorage.setItem("token", res.data.token);
-                navigate("/home");
+                navigate("/");
             }, 2000);
         }
     };

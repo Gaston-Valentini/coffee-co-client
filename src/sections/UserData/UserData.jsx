@@ -2,9 +2,10 @@ import style from "./UserData.module.css";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function UserData() {
-    // Almacena el usuario autenticado
+    // Almacena el usuario autenticado.
     const [user, setUser] = useState({
         name: "",
         surname: "",
@@ -22,9 +23,10 @@ export default function UserData() {
         password: "",
         confirm: "",
         phone: "",
+        photo: "",
     });
 
-    // Obtiene la información del usuario autenticado
+    // Obtiene la información del usuario autenticado.
     const getUserAuth = () => {
         const authUser = localStorage.getItem("user");
         setUser(JSON.parse(authUser));
@@ -82,6 +84,40 @@ export default function UserData() {
         }));
     };
 
+    // Sube la imagen de perfil a Cloudinary.
+    const selectImage = async (e) => {
+        const image = e.target.files[0];
+
+        // Verificar si el tipo de archivo es una imagen.
+        if (!image.type.startsWith("image")) {
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                photo: "Please select an image file",
+            }));
+            return;
+        }
+
+        // Subir la imagen a Cloudinary.
+        const formData = new FormData();
+        formData.append("file", image);
+        formData.append("upload_preset", "nhkcnosu");
+        formData.append("api_key", "548415732373855");
+
+        try {
+            // Actualiza el estado de usuario con la URL de la imagen almacenada en Cloudinary.
+            const res = await axios.post("https://api.cloudinary.com/v1_1/dmltmuab5/image/upload", formData);
+            setUser((prevState) => ({
+                ...prevState,
+                photo: res.data.url,
+            }));
+        } catch (error) {
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                photo: "There was an error uploading the image",
+            }));
+        }
+    };
+
     useEffect(() => {
         getUserAuth();
     }, []);
@@ -90,7 +126,13 @@ export default function UserData() {
         <section className={style.container}>
             <div className={style.title}>Personal Info</div>
             <div className={style.photo}>
-                <img src={user.photo} />
+                <div className={style.photoImage}>
+                    <img src={user.photo} />
+                </div>
+
+                <div className={style.photoName}>
+                    {user.name} {user.surname}
+                </div>
             </div>
             <form className={style.form}>
                 <div className={`${style.formSection} ${errors.name && style.error}`}>
@@ -171,9 +213,18 @@ export default function UserData() {
                     <PhoneInput placeholder="Phone number" style={{ gap: "5px" }} value={user.phone || ""} onChange={(value) => setUser((prevState) => ({ ...prevState, phone: value || "" }))} onBlur={(e) => handleInput({ target: { name: "phone", value: e.target.value } })} />
                     <div className={style.formSectionError}>{errors.phone}</div>
                 </div>
-                <div className={style.formSection}>
+                <div className={`${style.formSection} ${errors.photo && style.error}`}>
                     <div className={style.formSectionTitle}>Profile Photo</div>
-                    <input type="file" style={{ backgroundColor: "white" }} />
+                    <input
+                        type="file"
+                        accept="image"
+                        name="photo"
+                        style={{ backgroundColor: "white" }}
+                        onChange={(e) => {
+                            selectImage(e);
+                        }}
+                    />
+                    <div className={style.formSectionError}>{errors.photo}</div>
                 </div>
                 <input className={style.formSubmit} type="submit" value="Save" disabled={Object.values(errors).some((error) => error !== "")} />
             </form>

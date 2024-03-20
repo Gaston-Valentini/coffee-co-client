@@ -20,9 +20,16 @@ const userSlice = createSlice({
                 data: action.payload,
             };
         },
+
+        logout: (state, action) => {
+            return {
+                token: null,
+                data: null,
+            };
+        },
     },
 });
 
 export { userSlice };
 export default userSlice.reducer;
-export const { setTokenRedux, setUserRedux } = userSlice.actions;
+export const { setTokenRedux, setUserRedux, logout } = userSlice.actions;

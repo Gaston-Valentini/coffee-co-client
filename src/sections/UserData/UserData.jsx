@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { handleInput } from "../../functions/functions";
 import { updateUser } from "../../apiCalls/apiCalls";
-import { setUserRedux } from "../../features/user/userSlice";
+import { setUserRedux, logout } from "../../features/user/userSlice";
 
 export default function UserData() {
     // Función para despachar acciones de Redux.
@@ -91,6 +91,11 @@ export default function UserData() {
         navigate("/");
     };
 
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate("/login");
+    };
+
     useEffect(() => {
         setUser(authUser);
     }, [authUser]);
@@ -148,7 +153,12 @@ export default function UserData() {
                     <input type="file" accept="image" name="photo" style={{ backgroundColor: "white" }} onChange={(e) => selectImage(e)} />
                     <div className={style.formSectionError}>{errors.photo}</div>
                 </div>
-                <input className={style.formSubmit} type="submit" value="Save" disabled={Object.values(errors).some((error) => error !== "")} />
+                <div className={style.formButtons}>
+                    <input className={style.formButtonsSubmit} type="submit" value="Save" disabled={Object.values(errors).some((error) => error !== "")} />
+                    <div className={style.formButtonsLogout} onClick={handleLogout}>
+                        Logout
+                    </div>
+                </div>
             </form>
         </section>
     );

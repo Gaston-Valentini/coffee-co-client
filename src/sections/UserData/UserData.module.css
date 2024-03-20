@@ -77,10 +77,25 @@
     color: red;
 }
 
-.formSubmit {
-    align-self: flex-start;
+.formButtons {
     margin-top: 20px;
-    width: 200px;
+    display: flex;
+    gap: 20px;
+}
+
+.formButtonsLogout {
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    background-color: var(--red);
+    border: none;
+    color: white;
+}
+
+.formButtonsSubmit {
+    width: 120px;
     padding: 15px;
     font-size: 16px;
     background-color: var(--brown);
@@ -88,17 +103,18 @@
     color: white;
 }
 
-.formSubmit:hover {
+.formButtonsLogout:hover,
+.formButtonsSubmit:hover {
     cursor: pointer;
     background-color: var(--black);
     transition: 0.3s;
 }
 
-.formSubmit:disabled {
+.formButtonsSubmit:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
 
-.formSubmit:disabled:hover {
+.formButtonsSubmit:disabled:hover {
     background-color: var(--brown);
 }

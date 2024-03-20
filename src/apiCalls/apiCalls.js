@@ -16,16 +16,20 @@ const login = async (body) => {
     }
 };
 
-const getUser = async (token) => {
+const updateUser = async (token, id, body) => {
     try {
-        return await axios.get("http://localhost:4000/user/getUser", {
-            headers: {
-                Authorization: token,
-            },
-        });
+        return await axios.put(
+            "http://localhost:4000/user/updateUser",
+            { id, ...body },
+            {
+                headers: {
+                    Authorization: token,
+                },
+            }
+        );
     } catch (error) {
         return error;
     }
 };
 
-export { register, login, getUser };
+export { register, login, updateUser };

@@ -1,10 +1,15 @@
 import style from "./Login.module.css";
 import logo from "../../assets/images/logo-white.png";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { setTokenRedux, setUserRedux } from "../../features/user/userSlice.js";
 import { login } from "../../apiCalls/apiCalls.js";
 
 export default function Login() {
+    // Función para despachar acciones de Redux.
+    const dispatch = useDispatch();
+
     // Función de navegación.
     const navigate = useNavigate();
 
@@ -23,9 +28,9 @@ export default function Login() {
     // Estado de mensaje.
     const [message, setMessage] = useState("");
 
-    // Función que actualiza el del estado de usuario.
+    // Función que actualiza el estado de usuario.
     const handleInput = (e) => {
-        // Actualiza el estado de usuario con el atributo name y el valor del elemento que ejecuta el evento.
+        // Actualiza el estado de usuario con el atributo name con el value del elemento que ejecuta el evento.
         const { name, value } = e.target;
         setUser((prevState) => ({
             ...prevState,
@@ -56,12 +61,13 @@ export default function Login() {
                     break;
             }
         } else {
-            // Si no hay error actualiza el mensaje general del formulario para que el usuario sepa que todo fué bien
+            // Si no hay error actualiza el mensaje general del formulario para que el usuario sepa que todo fué bien y almacena la información del usuario en Redux.
             setMessage(res.data.message);
+            dispatch(setUserRedux(res.data.user));
+            dispatch(setTokenRedux(res.data.token));
 
-            // Luego de 2 segundos almacena el token del usuario y navega a la vista home
+            // Luego de 2 segundos navega a la vista home.
             setTimeout(() => {
-                localStorage.setItem("token", res.data.token);
                 navigate("/");
             }, 2000);
         }

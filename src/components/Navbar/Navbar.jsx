@@ -1,37 +1,30 @@
 import style from "./Navbar.module.css";
 import { LiaBarsSolid } from "react-icons/lia";
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { getUser } from "../../apiCalls/apiCalls.js";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
-    // Define la aparición del navbar en dispositivos móviles
+    // Estado del usuario.
+    const [user, setUser] = useState(null);
+
+    // Usuario autenticado en Redux.
+    const authUser = useSelector((state) => state.user.data);
+
+    // Define la aparición del navbar en dispositivos móviles.
     const [isLinksActive, setIsLinksActive] = useState(false);
 
     // Referencia al navbar
     const links = useRef(null);
 
-    // Almacena el token del ususario autenticado
-    const [token, setToken] = useState(localStorage.getItem("token"));
-
-    // Almacena el usuario autenticado
-    const [user, setUser] = useState();
-
-    // Ejecuta la aparición o desaparición del navbar
+    // Ejecuta la aparición o desaparición del navbar.
     const onBars = () => {
         setIsLinksActive(!isLinksActive);
     };
 
-    // Obtiene la información del usuario relacionado con el token
-    const getUserData = async () => {
-        const res = await getUser(token);
-        setUser(res.data.user);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-    };
-
     useEffect(() => {
-        getUserData();
-    }, []);
+        setUser(authUser);
+    }, [authUser]);
 
     return (
         <nav className={style.container}>

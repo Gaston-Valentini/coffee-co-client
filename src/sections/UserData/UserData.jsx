@@ -3,17 +3,32 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../../apiCalls/apiCalls";
+import { setUserRedux } from "../../features/user/userSlice";
 
 export default function UserData() {
+    // Función para despachar acciones de Redux.
+    const dispatch = useDispatch();
+
+    // Función de navegación.
+    const navigate = useNavigate();
+
     // Almacena el usuario autenticado.
     const [user, setUser] = useState({
         name: "",
         surname: "",
         email: "",
         password: "",
+        confirm: "",
         phone: "",
         photo: "",
     });
+
+    // Usuario autenticado en Redux.
+    const authUser = useSelector((state) => state.user.data);
+    const authToken = useSelector((state) => state.user.token);
 
     // Estado de errores.
     const [errors, setErrors] = useState({
@@ -26,12 +41,6 @@ export default function UserData() {
         photo: "",
     });
 
-    // Obtiene la información del usuario autenticado.
-    const getUserAuth = () => {
-        const authUser = localStorage.getItem("user");
-        setUser(JSON.parse(authUser));
-    };
-
     // Función de validación de contraseña.
     const validatePassword = (password) => {
         if (!password) return "Password is required";
@@ -42,9 +51,9 @@ export default function UserData() {
         return "";
     };
 
-    // Función que actualiza el estado del usuario.
+    // Función que actualiza el estado de usuario.
     const handleInput = (e) => {
-        // Actualiza el estado de usuario con el atributo name y el valor del elemento que ejecuta el evento.
+        // Actualiza el estado de usuario con el atributo name con el value del elemento que ejecuta el evento.
         const { name, value } = e.target;
         setUser((prevState) => ({
             ...prevState,
@@ -118,9 +127,24 @@ export default function UserData() {
         }
     };
 
+    // Actualiza el usuario en la base de datos con los datos del estado del ususario actual
+    const handleSubmitUser = async (e) => {
+        // Previene el comportamiento por defecto del formulario para que no recargue la página.
+        e.preventDefault();
+
+        // Ejecuta la llamada de actualizar usuario al servidor.
+        const res = await updateUser(authToken, user.id, user);
+
+        // Actualiza el estado de usuario de Redux
+        dispatch(setUserRedux(res.data.user));
+
+        // Navega a la vista home
+        navigate("/");
+    };
+
     useEffect(() => {
-        getUserAuth();
-    }, []);
+        setUser(authUser);
+    }, [authUser]);
 
     return (
         <section className={style.container}>
@@ -134,7 +158,12 @@ export default function UserData() {
                     {user.name} {user.surname}
                 </div>
             </div>
-            <form className={style.form}>
+            <form
+                className={style.form}
+                onSubmit={(e) => {
+                    handleSubmitUser(e);
+                }}
+            >
                 <div className={`${style.formSection} ${errors.name && style.error}`}>
                     <div className={style.formSectionTitle}>Name</div>
                     <input

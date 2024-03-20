@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { setTokenRedux, setUserRedux } from "../../features/user/userSlice.js";
+import { handleInput } from "../../functions/functions.js";
 import { register } from "../../apiCalls/apiCalls.js";
 
 export default function Register() {
@@ -41,58 +42,6 @@ export default function Register() {
 
     // Estado de mensaje.
     const [message, setMessage] = useState("");
-
-    // Función de validación de contraseña.
-    const validatePassword = (password) => {
-        if (!password) return "Password is required";
-        if (password.length < 8) return "Password must be at least 8 characters long";
-        if (!/[A-Z]/.test(password)) return "Password must contain at least one uppercase letter";
-        if (!/[a-z]/.test(password)) return "Password must contain at least one lowercase letter";
-        if (!/\d/.test(password)) return "Password must contain at least one number";
-        return "";
-    };
-
-    // Función que actualiza el estado de usuario.
-    const handleInput = (e) => {
-        // Actualiza el estado de usuario con el atributo name con el value del elemento que ejecuta el evento.
-        const { name, value } = e.target;
-        setUser((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
-
-        // Teniendo en cuenta el name del elemento, valida el value y en caso de haber un error actualiza el mensaje de error con el valor correspondiente a ese name.
-        let errorMessage = "";
-        switch (name) {
-            case "name":
-                errorMessage = value.trim() ? "" : "Name is required";
-                break;
-            case "surname":
-                errorMessage = value.trim() ? "" : "Surname is required";
-                break;
-            case "email":
-                const emailRegex = /\S+@\S+\.\S+/;
-                errorMessage = value.trim() && emailRegex.test(value) ? "" : "Invalid email address";
-                break;
-            case "password":
-                errorMessage = validatePassword(value);
-                break;
-            case "confirm":
-                errorMessage = value === user.password ? "" : "Passwords do not match";
-                break;
-            case "phone":
-                errorMessage = value.trim() ? "" : "Phone number is required";
-                break;
-            default:
-                break;
-        }
-
-        // Actualiza el estado de errores (será una cadena vacía si no hay errores).
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            [name]: errorMessage,
-        }));
-    };
 
     // Ejecuta el envío del formulario.
     const onSubmit = async (e) => {
@@ -147,27 +96,27 @@ export default function Register() {
                     <div className={style.formDataFields}>
                         <div className={style.formDataFieldsMessage}>{message}</div>
                         <div className={`${style.formDataFieldsField} ${errors.name && style.error}`}>
-                            <input placeholder="Name" type="text" name="name" onChange={(e) => handleInput(e)} onBlur={(e) => handleInput(e)} />
+                            <input placeholder="Name" type="text" name="name" onChange={(e) => handleInput(e, user, setUser, setErrors)} onBlur={(e) => handleInput(e, user, setUser, setErrors)} />
                             <div className={style.formDataFieldsFieldError}>{errors.name}</div>
                         </div>
                         <div className={`${style.formDataFieldsField} ${errors.surname && style.error}`}>
-                            <input placeholder="Surname" type="text" name="surname" onChange={(e) => handleInput(e)} onBlur={(e) => handleInput(e)} />
+                            <input placeholder="Surname" type="text" name="surname" onChange={(e) => handleInput(e, user, setUser, setErrors)} onBlur={(e) => handleInput(e, user, setUser, setErrors)} />
                             <div className={style.formDataFieldsFieldError}>{errors.surname}</div>
                         </div>
                         <div className={`${style.formDataFieldsField} ${errors.email && style.error}`}>
-                            <input placeholder="Email" type="email" name="email" onChange={(e) => handleInput(e)} onBlur={(e) => handleInput(e)} />
+                            <input placeholder="Email" type="email" name="email" onChange={(e) => handleInput(e, user, setUser, setErrors)} onBlur={(e) => handleInput(e, user, setUser, setErrors)} />
                             <div className={style.formDataFieldsFieldError}>{errors.email}</div>
                         </div>
                         <div className={`${style.formDataFieldsField} ${errors.password && style.error}`}>
-                            <input placeholder="Password" type="password" name="password" onChange={(e) => handleInput(e)} onBlur={(e) => handleInput(e)} />
+                            <input placeholder="Password" type="password" name="password" onChange={(e) => handleInput(e, user, setUser, setErrors)} onBlur={(e) => handleInput(e, user, setUser, setErrors)} />
                             <div className={style.formDataFieldsFieldError}>{errors.password}</div>
                         </div>
                         <div className={`${style.formDataFieldsField} ${errors.confirm && style.error}`}>
-                            <input placeholder="Confirm password" type="password" name="confirm" onChange={(e) => handleInput(e)} onBlur={(e) => handleInput(e)} />
+                            <input placeholder="Confirm password" type="password" name="confirm" onChange={(e) => handleInput(e, user, setUser, setErrors)} onBlur={(e) => handleInput(e, user, setUser, setErrors)} />
                             <div className={style.formDataFieldsFieldError}>{errors.confirm}</div>
                         </div>
                         <div className={`${style.formDataFieldsField} ${errors.phone && style.error}`}>
-                            <PhoneInput placeholder="Phone number" style={{ gap: "5px" }} value={user.phone || ""} onChange={(value) => setUser((prevState) => ({ ...prevState, phone: value || "" }))} onBlur={(e) => handleInput({ target: { name: "phone", value: e.target.value } })} />
+                            <PhoneInput placeholder="Phone number" style={{ gap: "5px" }} value={user.phone || ""} onChange={(value) => setUser((prevState) => ({ ...prevState, phone: value || "" }))} onBlur={(e) => handleInput({ target: { name: "phone", value: e.target.value } }, user, setUser, setErrors)} />
                             <div className={style.formDataFieldsFieldError}>{errors.phone}</div>
                         </div>
                     </div>
